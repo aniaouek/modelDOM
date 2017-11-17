@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	//	tutaj trafia skryp operujacy na elementach ze strony
 	zmienKolor();
 	klawiszWcisniety();
+	pokazWpisane();
+	usunPokaz();
 });
 
 function zmienKolor() {
@@ -182,10 +184,53 @@ function klawiszWcisniety() {
 			this.style.border = '3px solid red';
 		});
 		inputy[i].addEventListener('keyup', function () {
-			this.style.border = '10px solid blue';
+			this.style.border = '3px solid blue';
 		});
 	}
 }
+
+function pokazWpisane() {
+	var inputy = document.querySelectorAll('#formularz input');
+
+	for (var i = 0; i < inputy.length; i++) {
+		inputy[i].addEventListener('change', pokaz);
+//		inputy[i].removeEventListener('change', pokaz);
+	}
+}
+	
+function pokaz() {
+	console.log(this.value);
+}
+
+function alarm() {
+	alert('997');
+}
+
+function usunPokaz() {
+	var inputy = document.querySelectorAll('#formularz input');
+	 
+	for(var i=0; i<inputy.length; i++) {
+		 if(i== 0) {
+			 inputy[i].removeEventListener('change', pokaz);
+		 }
+	 }
+}
+ linkCSS.addEventListener('click', function(event) {
+	 console.log(event.type);
+	 event.preventDefault();
+	 console.log('123');
+ });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
